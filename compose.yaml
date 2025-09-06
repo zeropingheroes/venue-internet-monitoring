@@ -7,10 +7,10 @@ services:
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     volumes:
-      #- ./wireguard-config:/config/
       - ./wg_confs:/config/wg_confs/
     ports:
       - 54972:54972/udp
+      - 8080:80/tcp # Allow access to speedtest-tracker
     env_file: "wireguard.env"
     healthcheck:
         test: ["CMD-SHELL", "curl -f $$HEALTHCHECK_URL"]
