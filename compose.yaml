@@ -25,8 +25,8 @@ services:
     container_name: speedtest-tracker
     env_file: "speedtest-tracker.env"
     volumes:
-      - speedtest-tracker:/config
-    network_mode: "service:wireguard"
+      - ./speedtest-tracker-data:/config
+    network_mode: "service:wireguard" # Use Wireguard container's interfaces
     depends_on:
       wireguard:
         condition: service_healthy
