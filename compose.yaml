@@ -19,7 +19,7 @@ services:
       interval: 1m
       timeout: 10s
       retries: 5
-    restart: always
+    restart: unless-stopped
   speedtest-tracker:
     image: lscr.io/linuxserver/speedtest-tracker:latest
     container_name: speedtest-tracker
