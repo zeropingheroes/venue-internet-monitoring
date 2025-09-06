@@ -22,7 +22,6 @@ services:
     restart: unless-stopped
   speedtest-tracker:
     image: lscr.io/linuxserver/speedtest-tracker:latest
-    container_name: speedtest-tracker
     env_file: "speedtest-tracker.env"
     volumes:
       - ./speedtest-tracker-data:/config
