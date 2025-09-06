@@ -13,12 +13,12 @@ services:
       - 8080:80/tcp # Allow access to speedtest-tracker
     env_file: "wireguard.env"
     healthcheck:
-        test: ["CMD-SHELL", "curl -f $$HEALTHCHECK_URL"]
-        start_period: 15s
-        start_interval: 5s
-        interval: 1m
-        timeout: 10s
-        retries: 5
+      test: ["CMD-SHELL", "curl -f --connect-timeout 5 $$HEALTHCHECK_URL"]
+      start_period: 15s
+      start_interval: 5s
+      interval: 1m
+      timeout: 10s
+      retries: 5
     restart: always
   speedtest-tracker:
     image: lscr.io/linuxserver/speedtest-tracker:latest
