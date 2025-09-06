@@ -30,5 +30,12 @@ services:
       wireguard:
         condition: service_healthy
     restart: unless-stopped
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    volumes:
+      - ./uptime-kuma-data:/app/data
+    ports:
+      - 8081:3001/tcp
+    restart: unless-stopped
 volumes:
     speedtest-tracker:
