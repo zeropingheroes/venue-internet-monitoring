@@ -37,5 +37,22 @@ services:
     ports:
       - 8081:3001/tcp
     restart: unless-stopped
+  syslog-ng:
+    container_name: syslog-ng
+    image: balabit/syslog-ng:latest
+    volumes:
+      - ./syslogs:/var/log/
+    restart: unless-stopped
+  fritzbox-syslog-forwarder:
+    build:
+      context: ./fritzbox-syslog-forwarder
+      dockerfile: Dockerfile
+    env_file:
+      - fritzbox-syslog-forwarder.env
+    network_mode: "service:wireguard" # Use Wireguard container's interfaces
+    depends_on:
+      wireguard:
+        condition: service_healthy
+    restart: unless-stopped
 volumes:
     speedtest-tracker:

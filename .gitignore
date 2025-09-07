@@ -1,4 +1,6 @@
 *.env
+*.swp
 wg_confs/*.conf
 speedtest-tracker-data/
 uptime-kuma-data/
+syslogs/
