@@ -1,5 +1,6 @@
 *.env
 *.swp
+*.healthchecks
 wg_confs/*.conf
 speedtest-tracker-data/
 uptime-kuma-data/
